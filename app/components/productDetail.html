@@ -73,9 +73,24 @@
                 </div>
 
 
-                <button type="submit"
-                        class="btn btn-primary btn-lg"
-                        ng-disabled="productForm.$pristine || productForm.$invalid">Submit</button>
+                <div class="row">
+                    <div class="col-xs-4">
+                        <button type="submit"
+                                class="btn btn-primary btn-lg"
+                                ng-disabled="productForm.$pristine || productForm.$invalid">Submit</button>
+                    </div>
+                    <div class="col-xs-8">
+                        <div class="alert"
+                             ng-class="{ 'alert-success': !vm.status.error, 'alert-danger': vm.status.error }"
+                             ng-show="vm.status.message"
+                             role="alert">
+                            {{ vm.status.message }}
+                        </div>
+                    </div>
+                </div>
+
+
+
 
             </form>
 

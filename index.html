@@ -19,7 +19,7 @@
                 <li><a href="#/">Home</a></li>
                 <li ng-class="{ 'active' : vm.activeCategory.uuid === category.uuid }"
                     ng-repeat="category in vm.menuItems">
-                    <a href="" ng-click="vm.openCategory(category)">{{ category.fields.name }}</a>
+                    <a href="" ng-click="vm.openCategory(category)" ng-bind="category.fields.name"></a>
                 </li>
             </ul>
 

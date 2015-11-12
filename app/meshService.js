@@ -18,7 +18,7 @@
         };
 
         self.updateNode = function(node) {
-            return $http.post(API_URL + PROJECT_NAME + '/nodes/' + node.uuid, node);
+            return $http.put(API_URL + PROJECT_NAME + '/nodes/' + node.uuid, node);
         };
 
         self.getRootNodeChildren = function() {

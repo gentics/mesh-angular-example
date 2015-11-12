@@ -37,25 +37,28 @@
 
     function ProductDetailController($timeout, $routeParams, meshService) {
         var vm = this;
-        vm.status = { };
+        vm.status = { error: false, message: '' };
 
         meshService.getNode($routeParams.uuid)
             .then(function(response) { vm.product = response; });
 
         vm.updateProduct = function(node) {
             meshService.updateNode(node)
-                .then(showStatus)
+                .then(showStatus, showStatus)
                 .catch(showStatus);
         };
 
         function showStatus(result) {
             if (400 <= result.status) {
-                // error
-                vm.status = {
-
-                }
+                vm.status.error = true;
+                vm.status.message = 'Error: ' + result.statusText;
+            } else {
+                vm.status.error = false;
+                vm.status.message = "Product updated";
             }
-            console.log('status', result);
+            $timeout(function() {
+                vm.status.message = '';
+            }, 4000);
         }
     }
 
