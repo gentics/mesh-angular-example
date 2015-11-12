@@ -1,0 +1,21 @@
+<div>
+    <h1>{{ vm.category.fields.name }}</h1>
+    <p>{{ vm.category.fields.description }}</p>
+    <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-4"
+             ng-repeat="product in vm.products track by product.uuid">
+
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h3>
+                        <a href="#/product/{{ product.uuid }}">{{ product.fields.name }}</a>
+                    </h3>
+                    <p>
+                        {{ product.fields.description }}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

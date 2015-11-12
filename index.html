@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="meshDemo" ng-controller="AppController as vm">
+<head>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css">
+
+    <meta charset="UTF-8">
+    <title>Mesh Demo</title>
+</head>
+<body>
+
+<div class="container">
+    <h1>Mesh Demo</h1>
+
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+
+            <ul class="nav navbar-nav">
+                <li><a href="#/">Home</a></li>
+                <li ng-class="{ 'active' : vm.activeCategory.uuid === category.uuid }"
+                    ng-repeat="category in vm.menuItems">
+                    <a href="" ng-click="vm.openCategory(category)">{{ category.fields.name }}</a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+
+    <ng-view></ng-view>
+
+</div>
+
+<script>
+    /**
+     * Configure this API URL as required to connect to the Mesh server.
+     */
+    var API_URL = 'http://localhost/api/v1/';
+</script>
+
+<!-- vendor scripts -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular-route.js"></script>
+
+<!-- app scripts -->
+<script src="app/app.js"></script>
+<script src="app/meshService.js"></script>
+
+</body>
+</html>
