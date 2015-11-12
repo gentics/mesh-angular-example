@@ -1,9 +1,10 @@
 <div ng-show="vm.product">
+
+    <h1>{{ vm.product.fields.name || 'Untitled Product' }}</h1>
+
     <div class="row">
 
         <div class="col-md-6">
-            <h1>{{ vm.product.fields.name || 'Untitled Product' }}</h1>
-
             <form name="productForm" ng-submit="vm.updateProduct(vm.product)">
 
                 <div class="form-group" ng-class="{ 'has-error' : productForm.name.$invalid }">
@@ -20,12 +21,12 @@
                 <div class="form-group" ng-class="{ 'has-error' : productForm.description.$invalid }">
                     <label for="description">Description</label>
                     <textarea class="form-control"
+                              rows="7"
                               id="description"
                               name="description"
                               required
                               ng-model="vm.product.fields.description"></textarea>
                 </div>
-
 
                 <div class="form-group" ng-class="{ 'has-error' : productForm.sku.$invalid }">
                     <label for="sku">SKU</label>
@@ -37,10 +38,7 @@
                            ng-model="vm.product.fields.SKU">
                 </div>
 
-
-
                 <div class="row">
-
                     <div class="col-sm-4 form-group" ng-class="{ 'has-error' : productForm.price.$invalid }">
                         <label for="price">Price</label>
                         <input type="number"
@@ -69,9 +67,7 @@
                                name="stock"
                                ng-model="vm.product.fields.stocklevel">
                     </div>
-
                 </div>
-
 
                 <div class="row">
                     <div class="col-xs-4">
@@ -88,9 +84,6 @@
                         </div>
                     </div>
                 </div>
-
-
-
 
             </form>
 
