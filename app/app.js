@@ -32,7 +32,11 @@
         meshService.getNode($routeParams.uuid)
             .then(function(response) {
                 vm.category = response;
-            })
+            });
+
+        vm.getProductImageUrl = function(node) {
+            return meshService.getBinaryUrl(node.fields.productImage.uuid);
+        };
     }
 
     function ProductDetailController($timeout, $routeParams, meshService) {
@@ -46,6 +50,12 @@
             meshService.updateNode(node)
                 .then(showStatus, showStatus)
                 .catch(showStatus);
+        };
+
+        vm.getProductImageUrl = function(node) {
+            if(node && node.fields) {
+                return meshService.getBinaryUrl(node.fields.productImage.uuid);
+            }
         };
 
         function showStatus(result) {

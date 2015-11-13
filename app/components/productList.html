@@ -13,7 +13,8 @@
                     </h3>
 
                     <a href="#/product/{{ product.uuid }}">
-                        <div style="height: 200px; width: 100%;" class="img-thumbnail"></div>
+                        <img style="height: 200px; width: 100%;" class="img-thumbnail"
+                             ng-src="{{ vm.getProductImageUrl(product) }}">
                     </a>
 
                     <p>{{ product.fields.description }}</p>

@@ -41,6 +41,12 @@
                });
         };
 
+        self.getBinaryUrl = function(nodeUuid) {
+            if (nodeUuid) {
+                return API_URL + PROJECT_NAME + '/nodes/' + nodeUuid + '/bin';
+            }
+        };
+
         function meshGet(url) {
             return $http.get(API_URL + url + '?lang=' + DEFAULT_LANGUAGE)
                 .then(function(response) {
