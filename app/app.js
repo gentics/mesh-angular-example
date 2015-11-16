@@ -1,6 +1,14 @@
 (function() {
     'use strict';
 
+    /**
+     * The main controller for the app. It's sole function is to load the main categories which are
+     * used to populate the top navbar items.
+     *
+     * @param $location
+     * @param meshService
+     * @constructor
+     */
     function AppController($location, meshService) {
         var vm = this;
 
@@ -17,6 +25,15 @@
         }
     }
 
+    /**
+     * The controller for the products list view. It makes 2 calls to the Mesh API: one to populate the
+     * child nodes of the current category (i.e. the products list); and another to get the details
+     * of the current category.
+     *
+     * @param $routeParams
+     * @param meshService
+     * @constructor
+     */
     function ProductListController($routeParams, meshService) {
         var vm = this;
 
@@ -39,6 +56,15 @@
         };
     }
 
+    /**
+     * The controller for the product detail view. Gets the current product data and also handles putting
+     * modified data back to the Mesh API.
+     *
+     * @param $timeout
+     * @param $routeParams
+     * @param meshService
+     * @constructor
+     */
     function ProductDetailController($timeout, $routeParams, meshService) {
         var vm = this;
         vm.status = { error: false, message: '' };
@@ -72,6 +98,11 @@
         }
     }
 
+    /**
+     * Define the routes for the app.
+     *
+     * @param $routeProvider
+     */
     function routeConfig($routeProvider) {
         $routeProvider
             .when('/', {
@@ -90,6 +121,9 @@
             .otherwise('/');
     }
 
+    /**
+     * Bootstrap the app.
+     */
     angular.module('meshDemo', ['ngRoute'])
         .config(routeConfig)
         .controller('AppController', AppController);
