@@ -22,7 +22,7 @@
 
         function filterForProducts(response) {
             vm.products = response.data.filter(function(node) {
-                return node.schema.name === 'product';
+                return node.schema.name === 'vehicle';
             });
         }
 
@@ -35,7 +35,7 @@
             });
 
         vm.getProductImageUrl = function(node) {
-            return meshService.getBinaryUrl(node.fields.productImage.uuid);
+            return meshService.getBinaryUrl(node.fields.vehicleImage.uuid);
         };
     }
 
@@ -54,7 +54,7 @@
 
         vm.getProductImageUrl = function(node) {
             if(node && node.fields) {
-                return meshService.getBinaryUrl(node.fields.productImage.uuid);
+                return meshService.getBinaryUrl(node.fields.vehicleImage.uuid);
             }
         };
 
