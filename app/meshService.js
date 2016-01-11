@@ -78,7 +78,7 @@
          */
         self.getBinaryUrl = function(nodeUuid) {
             if (nodeUuid) {
-                return API_URL + PROJECT_NAME + '/nodes/' + nodeUuid + '/bin';
+                return API_URL + PROJECT_NAME + '/nodes/' + nodeUuid + '/languages/en/fields/image';
             }
         };
 
@@ -126,3 +126,4 @@
         .config(authInterceptorConfig);
 
 })();
+
