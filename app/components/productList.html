@@ -1,7 +1,7 @@
 <div ng-hide="!vm.category || !vm.products">
     <h1>{{ vm.category.fields.name }}</h1>
     <p>{{ vm.category.fields.description }}</p>
-    <div class="row">
+    <div class="row products">
         <div class="col-xs-12 col-sm-6 col-md-4"
              ng-repeat="product in vm.products track by product.uuid">
 
