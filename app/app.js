@@ -12,7 +12,10 @@
     function AppController($location, meshService) {
         var vm = this;
 
-        meshService.getRootNodeChildren()
+        meshService.login()
+            .then(function() {
+                return meshService.getRootNodeChildren();
+            })
             .then(function(response) {
                 vm.menuItems = response.data.filter(function(node) {
                     return node.schema.name === 'category';
@@ -52,7 +55,7 @@
             });
 
         vm.getProductImageUrl = function(node) {
-            return meshService.getBinaryUrl(node.fields.vehicleImage.uuid);
+            return meshService.getBinaryUrl(node.fields.vehicleImage.uuid, 'image');
         };
     }
 
@@ -74,13 +77,17 @@
 
         vm.updateProduct = function(node) {
             meshService.updateNode(node)
-                .then(showStatus, showStatus)
-                .catch(showStatus);
+                .then(
+                    function(response) {
+                        vm.product = response.data;
+                        showStatus(response);
+                    },
+                    showStatus);
         };
 
         vm.getProductImageUrl = function(node) {
             if(node && node.fields) {
-                return meshService.getBinaryUrl(node.fields.vehicleImage.uuid);
+                return meshService.getBinaryUrl(node.fields.vehicleImage.uuid, 'image');
             }
         };
 
