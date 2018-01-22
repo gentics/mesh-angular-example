@@ -1,2 +1,16 @@
 .idea
 .project
+*.launch
+.settings/
+*.sublime-workspace
+.vscode/*
+/dist
+/dist-server
+/tmp
+/out-tsc
+/node_modules
+.DS_Store
+/.sass-cache
+Thumbs.db
+npm-debug.log
+testem.log
