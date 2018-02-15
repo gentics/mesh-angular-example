@@ -1,0 +1,42 @@
+<div *ngIf="productCategory | async as category">
+  <h1>{{ category.fields.name }}</h1>
+  <p>{{ category.fields.description }}</p>
+
+  <div class="row">
+    <div *ngFor="let product of products | async"
+        class="product-row col-xs-12 col-sm-6 col-md-4">
+
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <h3>
+            <a [routerLink]="['/product', product.uuid]">{{ product.fields.name }}</a>
+            <small>{{ product.fields.SKU }}</small>
+          </h3>
+
+          <a [routerLink]="['/product', product.uuid]">
+            <img class="img-thumbnail" [src]="imageUrl(product)">
+          </a>
+
+          <p class="description">{{ product.fields.description }}</p>
+
+          <hr>
+
+          <div class="row">
+            <div class="col-xs-6 price">
+              <span class="label label-primary">
+                {{ product.fields.price | currency:'EUR':'symbol' }}
+              </span>
+            </div>
+            <div class="col-xs-6 text-right">
+              <span class="label label-default">Weight: {{ product.fields.weight }}</span><br>
+              <span class="label label-default">Stock: {{ product.fields.stocklevel }}</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
