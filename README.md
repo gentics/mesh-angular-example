@@ -18,8 +18,8 @@ Once the Gentics Mesh local instance is up and running you can start the example
 You can also use `npm run-script start` to build the project to the `dist/` directory.
 
 ## Implementation notes and caveats
-All calls to the Mesh API endpoints are made from the [`MeshService`](app/mesh.service.ts). The rest of the 
-app logic is contained in the [app component](app/app.component.ts) file.
+All calls to the Mesh API endpoints are made from the [`MeshService`](/src/app/mesh.service.ts). The rest of the 
+app logic is contained in the [app component](/src/app/app.component.ts) file.
 
 This example is intended to be an extremely simple. Therefore the implementation is necessarily naive. The idea is to provide a way to see the [Mesh API](https://getmesh.io/docs/beta/raml/) in action and provide an example for
 interested developers to experiment with.
