@@ -7,7 +7,7 @@
     {
       "root": "src",
       "outDir": "dist",
-      "baseHref": "/",
+      "baseHref": "demo",
       "assets": [
         "favicon.png"
       ],
