@@ -3,7 +3,7 @@
 This is a simple example application intended to demonstrate a few of the features of Gentics Mesh 
 ([getmesh.io](http://getmesh.io)).
 
-All calls to the Mesh API endpoints are made from the [`MeshService`](src/app/mesh.service.ts). The rest of the 
+All calls to the Mesh API endpoints are made from the [`MeshService`](src/app/mesh-data.service.ts). The rest of the 
 app logic is contained in the [app component](src/app/app.component.ts) file.
 
 The app is using Angular and built with [Angular CLI](https://github.com/angular/angular-cli). Run `ng serve`
