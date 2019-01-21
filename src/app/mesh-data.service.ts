@@ -38,8 +38,7 @@ export class MeshDataService implements OnDestroy {
         this.route.queryParamMap
             .pipe(
                 map((paramMap: ParamMap) => {
-                    const urlParamPreview = paramMap.get('preview');
-                    if (typeof urlParamPreview === 'string' && (new RegExp(/true/, 'i')).test(urlParamPreview)) {
+                    if (paramMap.get('preview')) {
                         return true;
                     } else {
                         return false;
