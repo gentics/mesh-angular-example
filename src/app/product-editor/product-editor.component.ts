@@ -1,11 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
-import { of as observableOf } from 'rxjs/observable/of';
 
 import { MeshDataService } from '../mesh-data.service';
-import { MeshNode, MeshError } from '../mesh-models';
+import { MeshNode } from '../mesh-models';
 import { Subscription } from 'rxjs/Subscription';
 
 
@@ -40,29 +38,6 @@ export class ProductEditorComponent implements OnInit, OnDestroy {
     }
 
     return undefined;
-  }
-
-  log(wtf: any) {
-    console.log(wtf);
-  }
-
-  save(node: MeshNode, productForm: NgForm) {
-    this.subscription.unsubscribe();
-    this.subscription = this.mesh.updateNode(node)
-      .subscribe(updatedNode => {
-        this.node = observableOf(updatedNode);
-        productForm.control.reset(updatedNode.fields);
-        this.status = { success: true, error: '' };
-        this.clearStatusAfterTimeout();
-      }, (response: { error: MeshError }) => {
-        this.status = { success: false, error: response.error.message };
-        this.clearStatusAfterTimeout();
-      });
-  }
-
-  clearStatusAfterTimeout() {
-    const timeout = setTimeout(() => this.status = undefined, 4000);
-    this.subscription = new Subscription(() => clearTimeout(timeout));
   }
 
 }
