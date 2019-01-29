@@ -1,105 +1,57 @@
 <div *ngIf="node | async as product">
+	
+	<h1>{{ product.fields.name || 'Untitled Product' }}</h1>
+	
+	<div class="row">
+		<div class="col-md-6">
+			
+			<dl class="form-group">
+				<dt for="name">Name</dt>
+				<dd>
+					{{product.fields.name}}
+				</dd>
+			</dl>
+			
+			<dl class="form-group">
+				<dt for="description">Description</dt>
+				<dd>
+					{{product.fields.description}}
+				</dd>
+			</dl>
 
-  <h1>{{ product.fields.name || 'Untitled Product' }}</h1>
+			<br>
+			
+			<dl class="form-group">
+				<dt for="sku">SKU</dt>
+				<dd>
+					{{product.fields.SKU}}
+				</dd>
+			</dl>
+			
+			<dl class="row">
+				<div class="col-sm-4 form-group">
+					<dt for="price">Price</dt>
+					<dd>
+						{{product.fields.price}}
+					</dd>
+				</div>
+				<div class="col-sm-4 form-group">
+					<dt for="weight">Weight</dt>
+					<dd>
+						{{product.fields.weight}}
+					</dd>
+				</div>
+				<div class="col-sm-4 form-group">
+					<dt for="stocklevel">Stock Level</dt>
+					<dd>
+						{{product.fields.stocklevel}}
+					</dd>
+				</div>
+			</dl>
+		</div>
 
-  <div class="row">
-    <div class="col-md-6">
-      <form #form="ngForm" (ngSubmit)="save(product, form)">
-
-        <div class="form-group" [class.has-error]="!name.valid">
-          <label for="name">Name</label>
-          <input class="form-control"
-              [(ngModel)]="product.fields.name"
-              #name="ngModel"
-              id="name"
-              name="name"
-              placeholder="Name"
-              required>
-        </div>
-
-        <div class="form-group" [class.has-error]="!description.valid">
-          <label for="description">Description</label>
-          <textarea class="form-control"
-              [(ngModel)]="product.fields.description"
-              #description="ngModel"
-              rows="7"
-              id="description"
-              name="description"
-              placeholder="Description"
-              required></textarea>
-        </div>
-
-        <div class="form-group" [class.has-error]="!sku.valid">
-          <label for="sku">SKU</label>
-          <input type="number"
-              class="form-control"
-              [(ngModel)]="product.fields.SKU"
-              #sku="ngModel"
-              id="sku"
-              name="SKU"
-              placeholder="SKU"
-              required>
-        </div>
-
-        <div class="row">
-          <div class="col-sm-4 form-group" [class.has-error]="!price.valid">
-            <label for="price">Price</label>
-            <input type="number"
-                class="form-control"
-                [(ngModel)]="product.fields.price"
-                #price="ngModel"
-                step="0.01"
-                min="0"
-                id="price"
-                name="price"
-                required>
-          </div>
-          <div class="col-sm-4 form-group" [class.has-error]="!weight.valid">
-            <label for="weight">Weight</label>
-            <input type="number"
-                class="form-control"
-                [(ngModel)]="product.fields.weight"
-                #weight="ngModel"
-                min="0"
-                id="weight"
-                name="weight"
-                required>
-          </div>
-          <div class="col-sm-4 form-group" [class.has-error]="!stocklevel.valid">
-            <label for="stocklevel">Stock Level</label>
-            <input type="number"
-                class="form-control"
-                [(ngModel)]="product.fields.stocklevel"
-                #stocklevel="ngModel"
-                min="0"
-                id="stocklevel"
-                name="stocklevel"
-                required>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-xs-4">
-            <button type="submit" class="btn btn-primary btn-lg"
-                [disabled]="form.pristine || form.invalid">Submit</button>
-          </div>
-          <div class="col-xs-8" *ngIf="status">
-            <div class="alert alert-success" role="alert" *ngIf="status.success">
-              Product updated
-            </div>
-            <div class="alert alert-danger" role="alert" *ngIf="!status.success">
-              Error: {{ status.error }}
-            </div>
-          </div>
-        </div>
-
-      </form>
-    </div>
-
-    <div class="col-md-6">
-      <img class="img-thumbnail" [src]="imageUrl(product)">
-    </div>
-
-  </div>
-
+		<div class="col-md-6">
+			<img class="img-thumbnail" [src]="imageUrl(product)">
+		</div>
+	</div>
 </div>
